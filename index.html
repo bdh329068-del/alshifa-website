@@ -1,1 +1,1521 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>مركز الشفاء الطبي</title>
+  <style>
+    :root {
+      --primary: #0f766e;
+      --secondary: #0ea5e9;
+      --dark: #0f172a;
+      --muted: #64748b;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --danger: #dc2626;
+      --success: #16a34a;
+    }
 
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: min(1150px, 92%);
+      margin: auto;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 0;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .brand small {
+      display: block;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 10px;
+      padding: 11px 16px;
+      cursor: pointer;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: var(--secondary);
+      color: #fff;
+    }
+
+    .btn-light {
+      background: #fff;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+
+    .btn-danger {
+      background: var(--danger);
+      color: #fff;
+    }
+
+    .btn-wa {
+      background: #25d366;
+      color: #fff;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(15, 118, 110, 0.96), rgba(14, 165, 233, 0.94)), #fff;
+      color: #fff;
+      padding: 65px 0;
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: 38px;
+    }
+
+    .hero p {
+      margin: 0 auto 22px;
+      max-width: 750px;
+      font-size: 18px;
+      color: rgba(255, 255, 255, 0.94);
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .section {
+      padding: 40px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 30px;
+      margin-bottom: 8px;
+      color: var(--dark);
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 26px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      color: var(--primary);
+    }
+
+    .card p {
+      color: var(--muted);
+      min-height: 48px;
+      margin-top: 0;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--dark);
+      margin: 12px 0;
+    }
+
+    .booking-box {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-weight: 700;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      background: #fff;
+      font-family: inherit;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .services-picker {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .service-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      cursor: pointer;
+    }
+
+    .service-item input {
+      width: auto;
+      margin-top: 4px;
+    }
+
+    .totals {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .totals-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-weight: 700;
+    }
+
+    .totals-row.big {
+      font-size: 24px;
+      color: var(--primary);
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+    }
+
+    .location-status {
+      margin-top: 8px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .location-status a {
+      color: var(--secondary);
+    }
+
+    .result-box {
+      display: none;
+      margin-top: 22px;
+    }
+
+    .success-card {
+      border: 1px solid #bbf7d0;
+      background: #f0fdf4;
+    }
+
+    .wa-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .admin {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 22px;
+      margin-bottom: 40px;
+    }
+
+    .admin-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 18px 0;
+    }
+
+    .tab {
+      display: none;
+    }
+
+    .admin-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+
+    .admin-row input[type="text"],
+    .admin-row input[type="number"] {
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .admin-row label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0;
+      white-space: nowrap;
+    }
+
+    .admin-row input[type="checkbox"] {
+      width: auto;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .alert {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      color: #9a3412;
+      padding: 12px 14px;
+      border-radius: 12px;
+      margin-bottom: 14px;
+    }
+
+    .order-card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 12px;
+      background: #fff;
+    }
+
+    .order-card h4 {
+      margin: 0 0 8px;
+      color: var(--primary);
+    }
+
+    .order-services {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    footer {
+      background: var(--dark);
+      color: #fff;
+      padding: 26px 0;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .small-note {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 700px) {
+      .hero h1 {
+        font-size: 28px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .brand {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container topbar">
+      <div class="brand">
+        مركز الشفاء الطبي
+        <small>خدمات طبية منزلية على مدار 24 ساعة</small>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button class="btn btn-primary" onclick="scrollToBooking()">اطلب خدمة الآن</button>
+        <button class="btn btn-light" onclick="openAdmin()">لوحة التحكم</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>رعاية طبية منزلية متكاملة</h1>
+      <p>
+        تحاليل منزلية، أشعة منزلية، تركيبات وإنعاش، عناية بالجروح، علاج الجروح المزمنة VAC،
+        تركيب قسطرة بولية، تمريض منزلي، رعاية كبار السن، وسيارة إسعاف مجهزة بالكامل.
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn-light" onclick="scrollToBooking()">احجز خدمة</button>
+        <a class="btn btn-wa" href="https://wa.me/201000000000" target="_blank">تواصل واتساب</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">خدماتنا الطبية</h2>
+      <p class="section-subtitle">يمكنك اختيار أكثر من خدمة وحساب السعر الإجمالي تلقائيًا</p>
+      <div id="servicesGrid" class="grid"></div>
+    </div>
+  </section>
+
+  <section class="section" id="booking">
+    <div class="container">
+      <h2 class="section-title">طلب خدمة منزلية</h2>
+      <p class="section-subtitle">
+        املأ بياناتك مرة واحدة واحصل على كود عميل خاص بك، وفي المرات القادمة اطلب بالكود فقط
+      </p>
+
+      <div class="booking-box">
+        <form id="bookingForm" onsubmit="submitOrder(event)">
+
+          <div class="form-grid">
+            <div class="full">
+              <label>كود العميل إن وجد</label>
+              <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <input id="customerCode" placeholder="مثال: ASH-1024" />
+                <button type="button" class="btn btn-secondary" onclick="retrieveCustomer()">استرجاع بياناتي</button>
+              </div>
+              <div class="small-note">لو هذه أول مرة اطلب منك، اترك هذا الحقل فارغًا</div>
+            </div>
+
+            <div>
+              <label>الاسم بالكامل *</label>
+              <input id="customerName" placeholder="اكتب الاسم الثلاثي" required />
+            </div>
+
+            <div>
+              <label>رقم الهاتف *</label>
+              <input id="customerPhone" placeholder="01xxxxxxxxx" required />
+            </div>
+
+            <div>
+              <label>المحافظة</label>
+              <select id="citySelect" onchange="renderAreaSelect()"></select>
+            </div>
+
+            <div>
+              <label>المنطقة</label>
+              <select id="areaSelect" onchange="calcTotal()"></select>
+            </div>
+
+            <div class="full">
+              <label>العنوان التفصيلي</label>
+              <input id="customerAddress" placeholder="رقم العمارة - الدور - الشقة - علامة مميزة" />
+            </div>
+
+            <div class="full">
+              <label>ملاحظات طبية</label>
+              <textarea id="medicalNotes" placeholder="أي تفاصيل طبية مهمة: سن المريض، الحالة، أمراض مزمنة، تعليمات خاصة..."></textarea>
+            </div>
+
+            <div class="full">
+              <button type="button" class="btn btn-secondary" onclick="getLocation()">📍 أرسل موقعي الحالي</button>
+              <div id="locationStatus" class="location-status">لم يتم تحديد الموقع بعد</div>
+            </div>
+
+            <div class="full">
+              <label>اختر الخدمات المطلوبة *</label>
+              <div id="bookingServices" class="services-picker"></div>
+            </div>
+          </div>
+
+          <div class="totals">
+            <div class="totals-row">
+              <span>سعر الخدمات</span>
+              <span id="servicesTotal">0 ج</span>
+            </div>
+            <div class="totals-row">
+              <span>رسوم الانتقال حسب المنطقة</span>
+              <span id="deliveryFee">0 ج</span>
+            </div>
+            <div class="totals-row big">
+              <span>الإجمالي</span>
+              <span id="grandTotal">0 ج</span>
+            </div>
+          </div>
+
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <button class="btn btn-primary" type="submit" style="flex:1; min-width:220px;">تأكيد الطلب</button>
+            <button class="btn btn-light" type="button" onclick="resetBooking()">مسح النموذج</button>
+          </div>
+        </form>
+
+        <div id="resultBox" class="result-box"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">أجهزة متطورة تصل إلى باب بيتك</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>جهاز الفاكيوم VAC</h3>
+          <p>لعلاج القدم السكري والجروح المزمنة داخل المنزل وتحت إشراف فريق متخصص.</p>
+        </div>
+        <div class="card">
+          <h3>جهاز شفط محمول</h3>
+          <p>لشفط الإفرازات والبلغم بأمان في المنزل.</p>
+        </div>
+        <div class="card">
+          <h3>تغيير معقم</h3>
+          <p>التغيير على جروح العمليات بأحدث المواد والأجهزة المعقمة.</p>
+        </div>
+        <div class="card">
+          <h3>تركيب القسطرة البولية</h3>
+          <p>خدمة متميزة وآمنة بواسطة متخصصين.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">سيارة إسعاف مجهزة بالكامل</h2>
+      <div class="card">
+        <p>
+          سيارة إسعاف مجهزة بالكامل لنقل الحالات الحرجة والمستقرة بأمان تام،
+          بمرافقة طاقم طبي مدرب وأجهزة إنعاش حديثة، متاحة على مدار 24 ساعة.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">عن المركز</h2>
+      <div class="card">
+        <p>
+          مركز الشفاء الطبي مؤسسة متخصصة في الرعاية الطبية المنزلية والخدمات داخل المركز.
+          نضم أطباء استشاريين في جميع التخصصات، وفريق تمريض مؤهل، وجلساء لرعاية كبار السن،
+          مع التزام كامل بالمواعيد والجودة والسرية التامة.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="adminSection" style="display:none;">
+    <div class="container">
+      <div class="admin">
+        <div style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:center;">
+          <h2 style="margin:0;">لوحة التحكم</h2>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn btn-light" onclick="closeAdmin()">إغلاق لوحة التحكم</button>
+            <button class="btn btn-danger" onclick="adminLogout()">تسجيل الخروج</button>
+          </div>
+        </div>
+
+        <div id="adminLogin" style="max-width:420px; margin:30px auto;">
+          <div class="card">
+            <h3>دخول المدير</h3>
+            <label>كلمة المرور</label>
+            <input id="adminPasswordInput" type="password" placeholder="اكتب كلمة المرور" />
+            <br /><br />
+            <button class="btn btn-primary" style="width:100%;" onclick="adminLoginAction()">دخول</button>
+          </div>
+        </div>
+
+        <div id="adminPanel" style="display:none;">
+          <div class="admin-tabs">
+            <button class="btn btn-primary" onclick="showAdminTab('services')">الخدمات والأسعار</button>
+            <button class="btn btn-secondary" onclick="showAdminTab('regions')">المناطق والانتقال</button>
+            <button class="btn btn-secondary" onclick="showAdminTab('notifications')">الإشعارات والأرقام</button>
+            <button class="btn btn-secondary" onclick="showAdminTab('orders')">الطلبات</button>
+          </div>
+
+          <div id="tab-services" class="tab">
+            <div class="alert">
+              أي تعديل هنا يظهر مباشرة في موقع العميل. الأسعار بالجنيه المصري.
+            </div>
+            <button class="btn btn-primary" onclick="addServiceRow()">+ إضافة خدمة</button>
+            <br /><br />
+            <div id="adminServices"></div>
+            <br />
+            <button class="btn btn-success" onclick="saveServicesAdmin()">حفظ الخدمات</button>
+          </div>
+
+          <div id="tab-regions" class="tab" style="display:none;">
+            <div class="alert">
+              أضف أو عدّل مناطق القاهرة والجيزة والإسكندرية، ورسوم الانتقال لكل منطقة.
+            </div>
+            <button class="btn btn-primary" onclick="addRegionRow()">+ إضافة منطقة</button>
+            <br /><br />
+            <div id="adminRegions"></div>
+            <br />
+            <button class="btn btn-success" onclick="saveRegionsAdmin()">حفظ المناطق</button>
+          </div>
+
+          <div id="tab-notifications" class="tab" style="display:none;">
+            <div class="alert">
+              هذه النسخة تحفظ الإعدادات محليًا في المتصفح. للإنتاج الفعلي يجب لاحقًا ربط قاعدة بيانات حقيقية وخدمة إشعارات خادم.
+            </div>
+
+            <div class="card">
+              <h3>إعدادات المدير</h3>
+              <div class="form-grid">
+                <div>
+                  <label>كلمة مرور لوحة التحكم</label>
+                  <input id="settingAdminPass" type="text" />
+                </div>
+              </div>
+            </div>
+
+            <br />
+
+            <div class="card">
+              <h3>إرسال الطلب إلى تيليجرام</h3>
+              <p class="small-note">
+                ضع Bot Token هنا، ثم ضع 4 Chat IDs أو IDs مجموعة. يمكنك ترك الخانات الفارغة بدون استخدام.
+              </p>
+              <div class="form-grid">
+                <div class="full">
+                  <label>Telegram Bot Token</label>
+                  <input id="settingTgToken" placeholder="123456789:AA..." />
+                </div>
+                <div>
+                  <label>Chat ID رقم 1</label>
+                  <input id="settingTg1" placeholder="مثال: 123456789 أو -1001234567890" />
+                </div>
+                <div>
+                  <label>Chat ID رقم 2</label>
+                  <input id="settingTg2" />
+                </div>
+                <div>
+                  <label>Chat ID رقم 3</label>
+                  <input id="settingTg3" />
+                </div>
+                <div>
+                  <label>Chat ID رقم 4</label>
+                  <input id="settingTg4" />
+                </div>
+              </div>
+            </div>
+
+            <br />
+
+            <div class="card">
+              <h3>أرقام الواتساب التي يظهر لها زر إرسال الطلب</h3>
+              <p class="small-note">
+                اكتب الأرقام بصيغة دولية بدون +، مثال: 201000000000
+              </p>
+              <div class="form-grid">
+                <div>
+                  <label>واتساب رقم 1</label>
+                  <input id="settingWa1" placeholder="201000000000" />
+                </div>
+                <div>
+                  <label>واتساب رقم 2</label>
+                  <input id="settingWa2" />
+                </div>
+                <div>
+                  <label>واتساب رقم 3</label>
+                  <input id="settingWa3" />
+                </div>
+                <div>
+                  <label>واتساب رقم 4</label>
+                  <input id="settingWa4" />
+                </div>
+              </div>
+            </div>
+
+            <br />
+
+            <div class="card">
+              <h3>WhatsApp API - اختياري</h3>
+              <p class="small-note">
+                الإرسال التلقائي عبر WhatsApp Cloud API يحتاج حساب Meta رسمي وقد لا يعمل من المتصفح مباشرة في الإنتاج.
+                هذه الخانة جاهزة للتكامل لاحقًا.
+              </p>
+              <div class="form-grid">
+                <div>
+                  <label>WhatsApp Phone Number ID</label>
+                  <input id="settingWaPhoneId" />
+                </div>
+                <div>
+                  <label>WhatsApp Access Token</label>
+                  <input id="settingWaToken" />
+                </div>
+              </div>
+            </div>
+
+            <br />
+            <button class="btn btn-success" onclick="saveNotifications()">حفظ إعدادات الإشعارات</button>
+          </div>
+
+          <div id="tab-orders" class="tab" style="display:none;">
+            <div class="alert">
+              الطلبات هنا محفوظة محليًا في هذا المتصفح في هذه النسخة. لاحقًا نربطها بقاعدة بيانات حقيقية.
+            </div>
+            <div id="adminOrders"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div style="font-size:20px; font-weight:800;">مركز الشفاء الطبي</div>
+      <div>خدمات طبية منزلية - القاهرة - الجيزة - الإسكندرية</div>
+      <div class="small-note">متاح على مدار 24 ساعة</div>
+    </div>
+  </footer>
+
+  <datalist id="cityList">
+    <option value="القاهرة"></option>
+    <option value="الجيزة"></option>
+    <option value="الإسكندرية"></option>
+  </datalist>
+
+  <script>
+    const DEFAULT_SERVICES = [
+      { id: 1, name: "التحاليل الطبية المنزلية", desc: "سحب العينات من المنزل وسرعة إظهار النتائج بدقة عالية.", price: 150, active: true },
+      { id: 2, name: "الأشعة المنزلية", desc: "أشعة سينية وتلفزيونية منزلية بأحدث الأجهزة المحمولة.", price: 400, active: true },
+      { id: 3, name: "التركيبات والإنعاش", desc: "تركيب الكانيولات وإعطاء الحقن عضل ووريد بدقة وأمان.", price: 100, active: true },
+      { id: 4, name: "العناية بالجروح والتغيير المعقم", desc: "التغيير على كافة الجروح وجروح العمليات بأحدث الأجهزة والمواد المعقمة.", price: 200, active: true },
+      { id: 5, name: "علاج الجروح المزمنة VAC", desc: "توفير جهاز الفاكيوم لعلاج القدم السكري والجروح المزمنة.", price: 800, active: true },
+      { id: 6, name: "تركيب القسطرة البولية", desc: "خدمة متميزة وآمنة بواسطة متخصصين.", price: 250, active: true },
+      { id: 7, name: "جلسة تمريض منزلية", desc: "تمريض متخصص لرعاية الحالات في المنزل.", price: 300, active: true },
+      { id: 8, name: "رعاية كبار السن", desc: "جلساء متخصصون لرعاية المسنين.", price: 350, active: true },
+      { id: 9, name: "نقل بالإسعاف", desc: "نقل الحالات بسيارة إسعاف مجهزة.", price: 1500, active: true }
+    ];
+
+    const DEFAULT_REGIONS = [
+      { id: 1, city: "القاهرة", area: "مدينة نصر", fee: 50, active: true },
+      { id: 2, city: "القاهرة", area: "مصر الجديدة", fee: 50, active: true },
+      { id: 3, city: "القاهرة", area: "المعادي", fee: 50, active: true },
+      { id: 4, city: "القاهرة", area: "التجمع الخامس", fee: 60, active: true },
+      { id: 5, city: "القاهرة", area: "الرحاب", fee: 60, active: true },
+      { id: 6, city: "القاهرة", area: "مدينتي", fee: 70, active: true },
+      { id: 7, city: "القاهرة", area: "الشروق", fee: 70, active: true },
+      { id: 8, city: "القاهرة", area: "العبور", fee: 70, active: true },
+      { id: 9, city: "القاهرة", area: "حلوان", fee: 60, active: true },
+      { id: 10, city: "القاهرة", area: "المطرية", fee: 50, active: true },
+      { id: 11, city: "القاهرة", area: "عين شمس", fee: 50, active: true },
+      { id: 12, city: "القاهرة", area: "الزيتون", fee: 50, active: true },
+      { id: 13, city: "القاهرة", area: "المقطم", fee: 50, active: true },
+      { id: 14, city: "القاهرة", area: "السيدة زينب", fee: 50, active: true },
+      { id: 15, city: "القاهرة", area: "القاهرة الجديدة", fee: 60, active: true },
+      { id: 16, city: "القاهرة", area: "وسط البلد", fee: 50, active: true },
+      { id: 17, city: "القاهرة", area: "شبرا", fee: 50, active: true },
+      { id: 18, city: "القاهرة", area: "روض الفرج", fee: 50, active: true },
+      { id: 19, city: "القاهرة", area: "المنيل", fee: 50, active: true },
+      { id: 20, city: "القاهرة", area: "المرج", fee: 60, active: true },
+
+      { id: 21, city: "الجيزة", area: "الدقي", fee: 50, active: true },
+      { id: 22, city: "الجيزة", area: "العجوزة", fee: 50, active: true },
+      { id: 23, city: "الجيزة", area: "المهندسين", fee: 50, active: true },
+      { id: 24, city: "الجيزة", area: "الهرم", fee: 60, active: true },
+      { id: 25, city: "الجيزة", area: "فيصل", fee: 60, active: true },
+      { id: 26, city: "الجيزة", area: "6 أكتوبر", fee: 80, active: true },
+      { id: 27, city: "الجيزة", area: "الشيخ زايد", fee: 80, active: true },
+      { id: 28, city: "الجيزة", area: "حدائق أكتوبر", fee: 80, active: true },
+      { id: 29, city: "الجيزة", area: "الوراق", fee: 50, active: true },
+      { id: 30, city: "الجيزة", area: "إمبابة", fee: 50, active: true },
+      { id: 31, city: "الجيزة", area: "بولاق الدكرور", fee: 50, active: true },
+      { id: 32, city: "الجيزة", area: "كرداسة", fee: 70, active: true },
+      { id: 33, city: "الجيزة", area: "الحوامدية", fee: 70, active: true },
+      { id: 34, city: "الجيزة", area: "البدرشين", fee: 70, active: true },
+      { id: 35, city: "الجيزة", area: "العياط", fee: 80, active: true },
+      { id: 36, city: "الجيزة", area: "أبو النمرس", fee: 70, active: true },
+      { id: 37, city: "الجيزة", area: "المنيب", fee: 50, active: true },
+      { id: 38, city: "الجيزة", area: "صفط اللبن", fee: 50, active: true },
+      { id: 39, city: "الجيزة", area: "أطفيح", fee: 90, active: true },
+      { id: 40, city: "الجيزة", area: "برج العرب الجديدة", fee: 90, active: true },
+
+      { id: 41, city: "الإسكندرية", area: "سيدي جابر", fee: 50, active: true },
+      { id: 42, city: "الإسكندرية", area: "محرم بك", fee: 50, active: true },
+      { id: 43, city: "الإسكندرية", area: "العصافرة", fee: 50, active: true },
+      { id: 44, city: "الإسكندرية", area: "المنتزه", fee: 60, active: true },
+      { id: 45, city: "الإسكندرية", area: "العامرية", fee: 60, active: true },
+      { id: 46, city: "الإسكندرية", area: "السيوف", fee: 50, active: true },
+      { id: 47, city: "الإسكندرية", area: "سموحة", fee: 50, active: true },
+      { id: 48, city: "الإسكندرية", area: "المندرة", fee: 50, active: true },
+      { id: 49, city: "الإسكندرية", area: "باكوس", fee: 50, active: true },
+      { id: 50, city: "الإسكندرية", area: "جليم", fee: 50, active: true },
+      { id: 51, city: "الإسكندرية", area: "ستانلي", fee: 50, active: true },
+      { id: 52, city: "الإسكندرية", area: "سان ستيفانو", fee: 50, active: true },
+      { id: 53, city: "الإسكندرية", area: "الشاطبي", fee: 50, active: true },
+      { id: 54, city: "الإسكندرية", area: "العطارين", fee: 50, active: true },
+      { id: 55, city: "الإسكندرية", area: "المنشية", fee: 50, active: true },
+      { id: 56, city: "الإسكندرية", area: "رأس التين", fee: 50, active: true },
+      { id: 57, city: "الإسكندرية", area: "الدخيلة", fee: 60, active: true },
+      { id: 58, city: "الإسكندرية", area: "العجمي", fee: 70, active: true },
+      { id: 59, city: "الإسكندرية", area: "البيطاش", fee: 70, active: true },
+      { id: 60, city: "الإسكندرية", area: "برج العرب", fee: 90, active: true }
+    ];
+
+    const DEFAULT_SETTINGS = {
+      adminPass: "AlShifa2026!",
+      telegramBotToken: "",
+      telegramChatId1: "",
+      telegramChatId2: "",
+      telegramChatId3: "",
+      telegramChatId4: "",
+      whatsappNumber1: "",
+      whatsappNumber2: "",
+      whatsappNumber3: "",
+      whatsappNumber4: "",
+      whatsappPhoneId: "",
+      whatsappToken: ""
+    };
+
+    function load(key, fallback) {
+      try {
+        const raw = localStorage.getItem("alshifa_" + key);
+        if (!raw) return fallback;
+        return JSON.parse(raw);
+      } catch (e) {
+        return fallback;
+      }
+    }
+
+    function save(key, value) {
+      localStorage.setItem("alshifa_" + key, JSON.stringify(value));
+    }
+
+    function esc(value) {
+      return String(value || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;");
+    }
+
+    let services = load("services", DEFAULT_SERVICES);
+    let regions = load("regions", DEFAULT_REGIONS);
+    let customers = load("customers", []);
+    let orders = load("orders", []);
+    let settings = { ...DEFAULT_SETTINGS, ...load("settings", {}) };
+    let currentLocationLink = "";
+
+    function renderPublicServices() {
+      const grid = document.getElementById("servicesGrid");
+      const activeServices = services.filter(s => s.active !== false);
+
+      grid.innerHTML = activeServices.map(service => `
+        <div class="card">
+          <h3>${esc(service.name)}</h3>
+          <p>${esc(service.desc || "")}</p>
+          <div class="price">${Number(service.price || 0).toLocaleString("ar-EG")} ج</div>
+          <button class="btn btn-primary" onclick="prefillService(${service.id})">اطلب هذه الخدمة</button>
+        </div>
+      `).join("");
+    }
+
+    function prefillService(serviceId) {
+      scrollToBooking();
+      const checkbox = document.querySelector(`input[data-service-id="${serviceId}"]`);
+      if (checkbox) {
+        checkbox.checked = true;
+        calcTotal();
+      }
+    }
+
+    function renderBookingServices() {
+      const box = document.getElementById("bookingServices");
+      const activeServices = services.filter(s => s.active !== false);
+
+      box.innerHTML = activeServices.map(service => `
+        <label class="service-item">
+          <input type="checkbox" data-service-id="${service.id}" data-price="${Number(service.price || 0)}" onchange="calcTotal()" />
+          <span>${esc(service.name)} - ${Number(service.price || 0).toLocaleString("ar-EG")} ج</span>
+        </label>
+      `).join("");
+    }
+
+    function getCities() {
+      const activeRegions = regions.filter(r => r.active !== false);
+      return [...new Set(activeRegions.map(r => r.city))];
+    }
+
+    function renderCitySelect() {
+      const citySelect = document.getElementById("citySelect");
+      const cities = getCities();
+
+      citySelect.innerHTML = `
+        <option value="">اختر المحافظة</option>
+        ${cities.map(city => `<option value="${esc(city)}">${esc(city)}</option>`).join("")}
+      `;
+
+      renderAreaSelect();
+    }
+
+    function renderAreaSelect() {
+      const citySelect = document.getElementById("citySelect");
+      const areaSelect = document.getElementById("areaSelect");
+      const city = citySelect.value;
+
+      const cityRegions = regions.filter(r => r.active !== false && r.city === city);
+
+      areaSelect.innerHTML = `
+        <option value="">اختر المنطقة</option>
+        ${cityRegions.map(region => `
+          <option value="${esc(region.area)}">${esc(region.area)} - رسوم انتقال ${Number(region.fee || 0).toLocaleString("ar-EG")} ج</option>
+        `).join("")}
+      `;
+
+      calcTotal();
+    }
+
+    function getSelectedRegion() {
+      const city = document.getElementById("citySelect").value;
+      const area = document.getElementById("areaSelect").value;
+
+      return regions.find(r => r.active !== false && r.city === city && r.area === area);
+    }
+
+    function calcTotal() {
+      const selected = [...document.querySelectorAll("#bookingServices input:checked")];
+      const servicesTotal = selected.reduce((sum, input) => sum + Number(input.dataset.price || 0), 0);
+
+      const region = getSelectedRegion();
+      const fee = region ? Number(region.fee || 0) : 0;
+
+      document.getElementById("servicesTotal").textContent = servicesTotal.toLocaleString("ar-EG") + " ج";
+      document.getElementById("deliveryFee").textContent = fee.toLocaleString("ar-EG") + " ج";
+      document.getElementById("grandTotal").textContent = (servicesTotal + fee).toLocaleString("ar-EG") + " ج";
+    }
+
+    function scrollToBooking() {
+      document.getElementById("booking").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function resetBooking() {
+      document.getElementById("bookingForm").reset();
+      currentLocationLink = "";
+      document.getElementById("locationStatus").textContent = "لم يتم تحديد الموقع بعد";
+      document.getElementById("resultBox").style.display = "none";
+      renderAreaSelect();
+      renderBookingServices();
+      calcTotal();
+    }
+
+    function getLocation() {
+      const status = document.getElementById("locationStatus");
+
+      if (!navigator.geolocation) {
+        status.textContent = "المتصفح لا يدعم تحديد الموقع الجغرافي";
+        return;
+      }
+
+      status.textContent = "جاري تحديد الموقع...";
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          currentLocationLink = `https://www.google.com/maps?q=${lat},${lng}`;
+
+          status.innerHTML = `
+            ✅ تم تحديد موقعك بنجاح -
+            <a href="${currentLocationLink}" target="_blank">عرض الموقع على الخريطة</a>
+          `;
+        },
+        () => {
+          status.textContent = "تعذر تحديد الموقع. تأكد من تفعيل GPS والسماح للمتصفح بالوصول إلى الموقع.";
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 10000
+        }
+      );
+    }
+
+    function generateCustomerCode() {
+      return "ASH-" + Math.floor(1000 + Math.random() * 9000);
+    }
+
+    function retrieveCustomer() {
+      const code = document.getElementById("customerCode").value.trim();
+
+      if (!code) {
+        alert("اكتب كود العميل أولًا");
+        return;
+      }
+
+      const customer = customers.find(c => c.code.toLowerCase() === code.toLowerCase());
+
+      if (!customer) {
+        alert("الكود غير موجود. إذا كانت أول مرة تطلب فيها اترك خانة الكود فارغة.");
+        return;
+      }
+
+      document.getElementById("customerName").value = customer.name || "";
+      document.getElementById("customerPhone").value = customer.phone || "";
+      document.getElementById("customerAddress").value = customer.address || "";
+      document.getElementById("medicalNotes").value = customer.medicalNotes || "";
+
+      if (customer.regionId) {
+        const region = regions.find(r => r.id === customer.regionId);
+        if (region) {
+          document.getElementById("citySelect").value = region.city;
+          renderAreaSelect();
+          document.getElementById("areaSelect").value = region.area;
+        }
+      }
+
+      calcTotal();
+      alert("تم استرجاع بياناتك بنجاح");
+    }
+
+    function getSelectedServices() {
+      return [...document.querySelectorAll("#bookingServices input:checked")].map(input => {
+        const service = services.find(s => s.id == input.dataset.serviceId);
+        return {
+          id: service ? service.id : null,
+          name: service ? service.name : "خدمة غير معروفة",
+          price: Number(input.dataset.price || 0)
+        };
+      });
+    }
+
+    function orderMessage(order) {
+      const servicesText = order.services.map(item => `- ${item.name}: ${item.price.toLocaleString("ar-EG")} ج`).join("\n");
+
+      return `
+طلب جديد من موقع مركز الشفاء الطبي
+
+كود العميل: ${order.customerCode}
+اسم العميل: ${order.customerName}
+رقم الهاتف: ${order.phone}
+المنطقة: ${order.region}
+العنوان: ${order.address || "غير مكتوب"}
+
+الخدمات:
+${servicesText}
+
+رسوم الانتقال: ${order.deliveryFee.toLocaleString("ar-EG")} ج
+الإجمالي: ${order.total.toLocaleString("ar-EG")} ج
+
+موقع العميل:
+${order.mapsLink || "لم يتم إرسال موقع"}
+
+وقت الطلب:
+${order.createdAt}
+      `.trim();
+    }
+
+    function cleanPhone(phone) {
+      return String(phone || "").replace(/\D/g, "");
+    }
+
+    function getWhatsAppNumbers() {
+      return [
+        settings.whatsappNumber1,
+        settings.whatsappNumber2,
+        settings.whatsappNumber3,
+        settings.whatsappNumber4
+      ].filter(item => item && String(item).trim() !== "");
+    }
+
+    function getTelegramChatIds() {
+      return [
+        settings.telegramChatId1,
+        settings.telegramChatId2,
+        settings.telegramChatId3,
+        settings.telegramChatId4
+      ].filter(item => item && String(item).trim() !== "");
+    }
+
+    async function sendTelegramNotification(order) {
+      const token = settings.telegramBotToken;
+      const chatIds = getTelegramChatIds();
+
+      if (!token || chatIds.length === 0) return;
+
+      const text = orderMessage(order);
+
+      for (const chatId of chatIds) {
+        try {
+          await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              chat_id: chatId,
+              text
+            })
+          });
+        } catch (error) {
+          console.error("Telegram send failed", error);
+        }
+      }
+    }
+
+    async function sendWhatsAppApiNotification(order) {
+      const phoneId = settings.whatsappPhoneId;
+      const token = settings.whatsappToken;
+      const numbers = getWhatsAppNumbers().map(cleanPhone);
+
+      if (!phoneId || !token || numbers.length === 0) return;
+
+      const body = orderMessage(order);
+
+      for (const to of numbers) {
+        try {
+          await fetch(`https://graph.facebook.com/v19.0/${phoneId}/messages`, {
+            method: "POST",
+            headers: {
+              "Authorization": `Bearer ${token}`,
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+              messaging_product: "whatsapp",
+              to,
+              type: "text",
+              text: {
+                body
+              }
+            })
+          });
+        } catch (error) {
+          console.error("WhatsApp API send failed", error);
+        }
+      }
+    }
+
+    async function notifyOrder(order) {
+      await sendTelegramNotification(order);
+      await sendWhatsAppApiNotification(order);
+    }
+
+    function showResult(order) {
+      const resultBox = document.getElementById("resultBox");
+      const waNumbers = getWhatsAppNumbers().map(cleanPhone);
+      const message = orderMessage(order);
+
+      let html = `
+        <div class="card success-card">
+          <h3 style="color: var(--success); margin-top:0;">✅ تم استلام الطلب بنجاح</h3>
+          <p><strong>كود العميل الخاص بك:</strong> ${esc(order.customerCode)}</p>
+          <p><strong>احتفظ بهذا الكود</strong> لتتمكن من الطلب مستقبلًا بدون إعادة إدخال بياناتك.</p>
+          <p><strong>الإجمالي:</strong> ${order.total.toLocaleString("ar-EG")} ج</p>
+          <p><strong>المنطقة:</strong> ${esc(order.region)}</p>
+          ${order.mapsLink ? `<p><a href="${order.mapsLink}" target="_blank">عرض موقعك على الخريطة</a></p>` : ""}
+      `;
+
+      if (waNumbers.length) {
+        html += `
+          <p class="small-note">
+            إذا لم يصل الطلب تلقائيًا، يمكنك الضغط على أحد الأزرار التالية لإرسال الطلب عبر واتساب:
+          </p>
+          <div class="wa-buttons">
+            ${waNumbers.map((number, index) => `
+              <a class="btn btn-wa" target="_blank" href="https://wa.me/${number}?text=${encodeURIComponent(message)}">
+                إرسال إلى واتساب ${index + 1}
+              </a>
+            `).join("")}
+          </div>
+        `;
+      }
+
+      html += `</div>`;
+
+      resultBox.innerHTML = html;
+      resultBox.style.display = "block";
+      resultBox.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function submitOrder(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("customerName").value.trim();
+      const phone = document.getElementById("customerPhone").value.trim();
+      const address = document.getElementById("customerAddress").value.trim();
+      const medicalNotes = document.getElementById("medicalNotes").value.trim();
+      const codeInput = document.getElementById("customerCode").value.trim();
+
+      if (!name || !phone) {
+        alert("من فضلك اكتب الاسم ورقم الهاتف");
+        return;
+      }
+
+      const selectedServices = getSelectedServices();
+
+      if (selectedServices.length === 0) {
+        alert("من فضلك اختر خدمة واحدة على الأقل");
+        return;
+      }
+
+      const region = getSelectedRegion();
+      const regionText = region ? `${region.city} - ${region.area}` : "غير محددة";
+      const deliveryFee = region ? Number(region.fee || 0) : 0;
+      const servicesTotal = selectedServices.reduce((sum, item) => sum + Number(item.price || 0), 0);
+      const total = servicesTotal + deliveryFee;
+
+      let customer = null;
+
+      if (codeInput) {
+        customer = customers.find(c => c.code.toLowerCase() === codeInput.toLowerCase());
+        if (!customer) {
+          alert("كود العميل غير صحيح. إذا كانت أول مرة تطلب فيها اترك خانة الكود فارغة.");
+          return;
+        }
+      }
+
+      if (!customer) {
+        customer = customers.find(c => c.phone === phone);
+      }
+
+      if (customer) {
+        customer.name = name;
+        customer.phone = phone;
+        customer.address = address;
+        customer.medicalNotes = medicalNotes;
+        customer.regionId = region ? region.id : null;
+        customer.updatedAt = new Date().toISOString();
+        if (!customer.code) customer.code = generateCustomerCode();
+      } else {
+        customer = {
+          id: Date.now(),
+          code: generateCustomerCode(),
+          name,
+          phone,
+          address,
+          medicalNotes,
+          regionId: region ? region.id : null,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString()
+        };
+        customers.push(customer);
+      }
+
+      const order = {
+        id: Date.now(),
+        customerId: customer.id,
+        customerCode: customer.code,
+        customerName: customer.name,
+        phone: customer.phone,
+        address: customer.address,
+        region: regionText,
+        services: selectedServices,
+        deliveryFee,
+        total,
+        mapsLink: currentLocationLink,
+        status: "جديد",
+        createdAt: new Date().toLocaleString("ar-EG")
+      };
+
+      orders.unshift(order);
+
+      save("customers", customers);
+      save("orders", orders);
+
+      notifyOrder(order);
+      showResult(order);
+
+      document.getElementById("customerCode").value = customer.code;
+      renderAdminOrders();
+    }
+
+    function openAdmin() {
+      document.getElementById("adminSection").style.display = "block";
+      renderAdmin();
+      document.getElementById("adminSection").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function closeAdmin() {
+      document.getElementById("adminSection").style.display = "none";
+    }
+
+    function renderAdmin() {
+      const loggedIn = sessionStorage.getItem("alshifa_admin_logged") === "1";
+      document.getElementById("adminLogin").style.display = loggedIn ? "none" : "block";
+      document.getElementById("adminPanel").style.display = loggedIn ? "block" : "none";
+
+      if (loggedIn) {
+        renderAdminServices();
+        renderAdminRegions();
+        renderAdminNotifications();
+        renderAdminOrders();
+      }
+    }
+
+    function adminLoginAction() {
+      const password = document.getElementById("adminPasswordInput").value;
+
+      if (password === settings.adminPass) {
+        sessionStorage.setItem("alshifa_admin_logged", "1");
+        renderAdmin();
+      } else {
+        alert("كلمة المرور غير صحيحة");
+      }
+    }
+
+    function adminLogout() {
+      sessionStorage.removeItem("alshifa_admin_logged");
+      renderAdmin();
+    }
+
+    function showAdminTab(tabName) {
+      document.querySelectorAll(".tab").forEach(tab => tab.style.display = "none");
+      document.getElementById("tab-" + tabName).style.display = "block";
+    }
+
+    function addServiceRow() {
+      services.push({
+        id: Date.now(),
+        name: "خدمة جديدة",
+        desc: "",
+        price: 0,
+        active: true
+      });
+      renderAdminServices();
+    }
+
+    function deleteService(index) {
+      services.splice(index, 1);
+      renderAdminServices();
+    }
+
+    function renderAdminServices() {
+      const box = document.getElementById("adminServices");
+
+      if (!services.length) {
+        box.innerHTML = "<p>لا توجد خدمات. أضف خدمة جديدة.</p>";
+        return;
+      }
+
+      box.innerHTML = services.map((service, index) => `
+        <div class="admin-row">
+          <input type="text" id="serviceName_${index}" value="${esc(service.name)}" placeholder="اسم الخدمة" />
+          <input type="text" id="serviceDesc_${index}" value="${esc(service.desc || "")}" placeholder="وصف الخدمة" />
+          <input type="number" id="servicePrice_${index}" value="${Number(service.price || 0)}" placeholder="السعر" style="max-width:130px;" />
+          <label>
+            <input type="checkbox" id="serviceActive_${index}" ${service.active !== false ? "checked" : ""} />
+            نشطة
+          </label>
+          <button class="btn btn-danger" onclick="deleteService(${index})">حذف</button>
+        </div>
+      `).join("");
+    }
+
+    function saveServicesAdmin() {
+      services = services.map((service, index) => {
+        return {
+          ...service,
+          name: document.getElementById(`serviceName_${index}`).value,
+          desc: document.getElementById(`serviceDesc_${index}`).value,
+          price: Number(document.getElementById(`servicePrice_${index}`).value || 0),
+          active: document.getElementById(`serviceActive_${index}`).checked
+        };
+      });
+
+      save("services", services);
+      renderPublicServices();
+      renderBookingServices();
+      calcTotal();
+      alert("تم حفظ الخدمات بنجاح");
+    }
+
+    function addRegionRow() {
+      regions.push({
+        id: Date.now(),
+        city: "القاهرة",
+        area: "منطقة جديدة",
+        fee: 0,
+        active: true
+      });
+      renderAdminRegions();
+    }
+
+    function deleteRegion(index) {
+      regions.splice(index, 1);
+      renderAdminRegions();
+    }
+
+    function renderAdminRegions() {
+      const box = document.getElementById("adminRegions");
+
+      if (!regions.length) {
+        box.innerHTML = "<p>لا توجد مناطق. أضف منطقة جديدة.</p>";
+        return;
+      }
+
+      box.innerHTML = regions.map((region, index) => `
+        <div class="admin-row">
+          <input type="text" id="regionCity_${index}" list="cityList" value="${esc(region.city)}" placeholder="المحافظة" />
+          <input type="text" id="regionArea_${index}" value="${esc(region.area)}" placeholder="اسم المنطقة" />
+          <input type="number" id="regionFee_${index}" value="${Number(region.fee || 0)}" placeholder="رسوم الانتقال" style="max-width:150px;" />
+          <label>
+            <input type="checkbox" id="regionActive_${index}" ${region.active !== false ? "checked" : ""} />
+            نشطة
+          </label>
+          <button class="btn btn-danger" onclick="deleteRegion(${index})">حذف</button>
+        </div>
+      `).join("");
+    }
+
+    function saveRegionsAdmin() {
+      regions = regions.map((region, index) => {
+        return {
+          ...region,
+          city: document.getElementById(`regionCity_${index}`).value,
+          area: document.getElementById(`regionArea_${index}`).value,
+          fee: Number(document.getElementById(`regionFee_${index}`).value || 0),
+          active: document.getElementById(`regionActive_${index}`).checked
+        };
+      });
+
+      save("regions", regions);
+      renderCitySelect();
+      alert("تم حفظ المناطق بنجاح");
+    }
+
+    function renderAdminNotifications() {
+      document.getElementById("settingAdminPass").value = settings.adminPass || "";
+      document.getElementById("settingTgToken").value = settings.telegramBotToken || "";
+      document.getElementById("settingTg1").value = settings.telegramChatId1 || "";
+      document.getElementById("settingTg2").value = settings.telegramChatId2 || "";
+      document.getElementById("settingTg3").value = settings.telegramChatId3 || "";
+      document.getElementById("settingTg4").value = settings.telegramChatId4 || "";
+      document.getElementById("settingWa1").value = settings.whatsappNumber1 || "";
+      document.getElementById("settingWa2").value = settings.whatsappNumber2 || "";
+      document.getElementById("settingWa3").value = settings.whatsappNumber3 || "";
+      document.getElementById("settingWa4").value = settings.whatsappNumber4 || "";
+      document.getElementById("settingWaPhoneId").value = settings.whatsappPhoneId || "";
+      document.getElementById("settingWaToken").value = settings.whatsappToken || "";
+    }
+
+    function saveNotifications() {
+      settings = {
+        ...settings,
+        adminPass: document.getElementById("settingAdminPass").value || settings.adminPass,
+        telegramBotToken: document.getElementById("settingTgToken").value.trim(),
+        telegramChatId1: document.getElementById("settingTg1").value.trim(),
+        telegramChatId2: document.getElementById("settingTg2").value.trim(),
+        telegramChatId3: document.getElementById("settingTg3").value.trim(),
+        telegramChatId4: document.getElementById("settingTg4").value.trim(),
+        whatsappNumber1: document.getElementById("settingWa1").value.trim(),
+        whatsappNumber2: document.getElementById("settingWa2").value.trim(),
+        whatsappNumber3: document.getElementById("settingWa3").value.trim(),
+        whatsappNumber4: document.getElementById("settingWa4").value.trim(),
+        whatsappPhoneId: document.getElementById("settingWaPhoneId").value.trim(),
+        whatsappToken: document.getElementById("settingWaToken").value.trim()
+      };
+
+      save("settings", settings);
+      alert("تم حفظ إعدادات الإشعارات بنجاح");
+    }
+
+    function renderAdminOrders() {
+      const box = document.getElementById("adminOrders");
+
+      if (!orders.length) {
+        box.innerHTML = "<p>لا توجد طلبات حتى الآن.</p>";
+        return;
+      }
+
+      box.innerHTML = orders.map(order => `
+        <div class="order-card">
+          <h4>${esc(order.customerCode)} - ${esc(order.customerName)}</h4>
+          <div>📱 ${esc(order.phone)}</div>
+          <div>📍 ${esc(order.region)}</div>
+          <div>🕒 ${esc(order.createdAt)}</div>
+          <div class="order-services">
+            ${order.services.map(item => `
+              <div>- ${esc(item.name)}: ${Number(item.price || 0).toLocaleString("ar-EG")} ج</div>
+            `).join("")}
+          </div>
+          <div><strong>رسوم الانتقال:</strong> ${Number(order.deliveryFee || 0).toLocaleString("ar-EG")} ج</div>
+          <div><strong>الإجمالي:</strong> ${Number(order.total || 0).toLocaleString("ar-EG")} ج</div>
+          ${order.mapsLink ? `<div style="margin-top:8px;"><a href="${order.mapsLink}" target="_blank">🗺️ عرض موقع العميل</a></div>` : ""}
+        </div>
+      `).join("");
+    }
+
+    renderPublicServices();
+    renderBookingServices();
+    renderCitySelect();
+    renderAdmin();
+    calcTotal();
+  </script>
+</body>
+  </html>
